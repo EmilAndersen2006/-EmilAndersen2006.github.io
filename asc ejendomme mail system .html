@@ -1,0 +1,29 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $to = "arkboy2006@gmail.com";
+    $subject = "Ny besked fra ASC Ejendomme";
+
+    $navn = trim($_POST["navn"]);
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    $besked = trim($_POST["besked"]);
+
+    if (!$email) {
+        exit("Ugyldig e-mailadresse");
+    }
+
+    $headers = "From: ASC Ejendomme <kontakt@ascejendomme.dk>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    $body = \"Navn: $navn\\n\";
+    $body .= \"E-mail: $email\\n\\n\";
+    $body .= \"Besked:\\n$besked\";
+
+    if (mail($to, $subject, $body, $headers)) {
+        echo \"OK\";
+    } else {
+        http_response_code(500);
+        echo \"FEJL\";
+    }
+}
