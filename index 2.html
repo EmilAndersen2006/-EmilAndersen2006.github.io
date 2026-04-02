@@ -1,0 +1,1053 @@
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASC Ejendomme ApS</title>
+  <meta name="description" content="ASC Ejendomme ApS – Professionel udlejning af huse og boliger." />
+
+  <style>
+#sliderCaption {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  width: 80%;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 15px;
+}
+#sliderDescription {
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1.6;
+  margin-top: 20px;
+  text-align: left; 
+  max-width: 75%;   
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
+  font-weight: 400;
+  display: block;
+}
+    :root {
+      --sidebar-width: 200px;
+      --primary-blue: #1f2a44;
+      --hover-blue: #41578f;
+      --bg-gray: #f4f6f8;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg-gray);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .layout { display: flex; min-height: 100vh; }
+
+    aside {
+  width: var(--sidebar-width);
+  background: var(--primary-blue);
+  color: #fff;
+  padding: 20px 10px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  transition: transform .4s ease;
+  z-index: 100;
+  box-sizing: border-box;
+
+  /* Sørg for at disse to linjer er her: */
+  display: flex;
+  flex-direction: column;
+}
+
+    aside.collapsed {
+      transform: translateX(calc(-1 * var(--sidebar-width)));
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      width: 40px;
+      height: 40px;
+      background: var(--primary-blue);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 0 6px 6px 0;
+      font-size: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    aside h2 { text-align: center; font-size: 18px; margin: 10px 0 25px; }
+
+    nav button {
+      width: 100%;
+      background: #2f3f66;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .3s;
+      text-align: left;
+    }
+
+    nav button:hover {
+      background: var(--hover-blue);
+      transform: translateX(4px);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+main {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left .4s ease, width .4s ease;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+    aside.collapsed + main {
+      margin-left: 0;
+      width: 100%;
+    }
+
+ /* 1. Standard indstillinger for alle sektioner */
+section {
+  display: none;
+  padding: 0px;
+  max-width: 2000px;
+  margin: 0 auto;
+  flex: 1;
+  box-sizing: border-box; /* Sikrer at billedet ikke strækker sig forkert pga. padding */
+  animation: fade .6s ease;
+  transition: all .4s ease;
+}
+
+/* 2. Særlige regler for sider med banner, så billedet kan gå helt til kant */
+#lejere, #fordele, #om {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 60px;
+}
+
+
+    section.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* FOOTER STYLING */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(31, 42, 68, 0.5); /* Halvgennemsigtig mørkeblå */
+      line-height: 1.6;
+    }
+
+    aside.collapsed + main section.active {
+      text-align: center;
+    }
+
+    h1 { font-size: 34px; color: var(--primary-blue); }
+    h2 { font-size: 28px; color: var(--primary-blue); }
+
+    /* ===== KONTAKT SEKTION ===== */
+    #kontakt {
+      text-align: center !important;
+    }
+
+    #kontakt form {
+      margin: 20px auto 0 auto;
+      text-align: left;
+      max-width: 500px;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery { margin-top: 40px; }
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 120px;
+      margin-top: 20px;
+Max-width: 1200px;
+    }
+    .thumb-grid img {
+      width: 170px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      gap: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+
+    /* ===== FORM STYLING ===== */
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    form button {
+      background: var(--primary-blue);
+      color: #fff;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* ===== COOKIE BANNER ===== */
+    #cookieBanner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--primary-blue);
+      color: #fff;
+      padding: 20px;
+      display: none;
+      z-index: 1000;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    #cookieBanner button { margin: 5px; padding: 8px 16px; border-radius: 4px; border: none; cursor: pointer; }
+    .accept { background: #4caf50; color: #fff; }
+    .decline { background: #ccc; color: #000; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      aside { transform: translateX(calc(-1 * var(--sidebar-width))); }
+      aside:not(.collapsed) { transform: translateX(0); }
+      main { margin-left: 0; width: 100%; }
+      section { padding: 80px 20px; text-align: center; }
+section { 
+        padding: 60px 15px; 
+        text-align: center; 
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* NYT: Her tvinger vi galleriet til at vise 2 billeder i bredden på mobilen */
+      .thumb-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+        padding: 0;
+      }
+      
+      .thumb-grid img {
+        height: 140px; /* Lidt lavere højde på mobil så det ser pænere ud */
+      }
+    }
+/* Styling til den store billedvisning (Modal) */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 2000; /* Skal ligge oven over alt andet */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Sort baggrund med 90% gennemsigtighed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+#modalCaption {
+  color: #fff;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Gør projekt-kortet klikbart */
+.project-card { cursor: pointer; transition: 0.3s; }
+.project-card:hover { transform: scale(1.02); }
+
+/* Modal (Baggrunden når man har klikket) */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95);
+  overflow-y: auto; /* Gør det muligt at scrolle ned gennem alle billederne */
+  padding: 40px 0;
+}
+
+/* Beholderen til de store billeder */
+.modal-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.modal-content-wrapper img {
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.close-gallery {
+  position: fixed;
+  top: 20px; right: 30px;
+  color: white; font-size: 40px;
+  cursor: pointer; z-index: 2100;
+}
+/* Slider Modal Styling */
+.modal-slider {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+}
+
+#sliderImage {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  font-size: 40px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.image-wrap-right {
+  float: right;            
+  margin-left: 25px;       
+  margin-bottom: 15px;     
+  padding: 0px;            /* Luft inde i rammen */
+  border: 10px solid #1f2a44; 
+  background: #ffffff;     
+  display: flex;
+  gap: 0px;               
+  max-width: 600px;
+}
+
+.image-wrap-right img {
+  width: 300px;            
+  height: 300px;           
+  object-fit: cover;       
+  border-radius: 4px;
+}
+
+/* Gør at de ligger under hinanden eller centreret på små mobilskærme */
+@media (max-width: 600px) {
+  .image-wrap-right {
+    float: none;
+    margin: 0 auto 20px auto;
+    justify-content: center;
+  }
+}
+
+#forside {
+  position: relative; /* Allows the image to anchor to this section */
+  min-height: 100vh;
+width: 100%;       
+  overflow: hidden;
+  padding: 0; 
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /
+  z-index: 1;        /* Lowest layer */
+  filter: brightness(50%); /* Makes your white text readable */
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 2;        /* Higher layer than the image */
+  padding: 60px;     /* Restores the look of your padding */
+  color: #ffffff;    /* Makes text white to stand out against the photo */
+}
+
+/* Ensure headings inside the overlay are also white */
+.content-overlay h1, 
+.content-overlay p {
+  color: #ffffff !important;
+}
+.bg-image {
+    filter: brightness(60%); /* Makes text easier to read */
+}
+
+.nav-arrow:hover { background: rgba(255,255,255,0.4); }
+.prev-arrow { left: -60px; }
+.next-arrow { right: -60px; }
+
+@media (max-width: 768px) {
+  .nav-arrow { padding: 5px 10px; font-size: 25px; }
+  .prev-arrow { left: 0; }
+  .next-arrow { right: 0; }
+}
+#lejere, #fordele, #om {
+  padding: 0 !important;
+  max-width: 100% !important; /* Dette fjerner de 2000px begrænsning */
+  margin: 0 !important;       /* Dette fjerner centreringen */
+  width: 100% !important;
+}
+
+/* Sørg for at banneret altid strækker sig 100% af main */
+.page-banner {
+  width: 100%;            
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  margin: 0; /* Ændret fra -60px for at undgå overlap problemer */
+  border-bottom: 5px solid var(--primary-blue);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.page-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.page-banner-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow: 4px 4px 16px rgba(0,0,0,0.5);
+  text-align: center;
+  width: 90%;
+}
+/* Når sektionen bliver aktiv, zoomer billedet en lille smule ind */
+section.active .page-banner img {
+  transform: scale(1.1);
+}
+  </style>
+</head>
+<body>
+
+<div id="cookieBanner">
+  <p>Vi anvender cookies for at sikre den bedste brugeroplevelse.</p>
+  <button class="accept" onclick="acceptCookies()">Ja tak</button>
+  <button class="decline" onclick="declineCookies()">Nej tak</button>
+</div>
+
+<div class="layout">
+<aside id="sidebar">
+  <div class="toggle-btn" onclick="toggleMenu()">☰</div>
+  <h2>ASC Ejendomme</h2>
+ <nav>
+  <button onclick="showPage('forside')">Forside</button>
+  
+  <button onclick="showPage('projekter-hoved'); toggleSubMenu()">Projekter ▾</button>
+  
+  <div id="projekter-sub" style="display: none; padding-left: 15px; flex-direction: column; gap: 5px; margin-bottom: 10px;">
+    <button onclick="showPage('faerdige')" style="font-size: 13px; background: #3d4f7a; padding: 8px;">↳ Færdige projekter</button>
+    <button onclick="showPage('kommende')" style="font-size: 13px; background: #3d4f7a; padding: 8px;">↳ Igangværende projekter</button>
+<button onclick="showPage('ledige')" style="font-size: 13px; background: #3d4f7a; padding: 8px;">↳ Ledige lejemål</button>
+  </div>
+
+  <button onclick="showPage('lejere')">Information til lejere</button>
+<button onclick="showPage('fordele')">Lejerfordele</button>
+  <button onclick="showPage('om')">Om os</button>
+  <button onclick="showPage('kontakt')">Kontakt</button>
+</nav>
+
+  <div style="text-align: center; padding: 20px 0; margin-top: auto;">
+    <img src="Logo.png" style="max-width: 170px; height: 120px;">
+  </div>
+</aside>
+
+
+
+  <main>
+    <section id="forside" class="active">
+<br>
+<img src="IMG_5106.jpeg" class="bg-image">
+
+<div class="content-overlay">
+    <h1>Velkommen til ASC Ejendomme ApS</h1>
+<br>
+<br>
+<p>Ejendomsinvestering og udvikling på Sydsjælland og Lolland-Falster.</p>
+<br>
+ <p>ASC Ejendomme ApS arbejder med opkøb, udvikling og drift af bolig- og erhvervsejendomme med fokus på langsigtet værdiskabelse og ansvarlig ejendomsdrift.<p/>
+<br>
+<p>Vi gennemfører løbende opkøb, totalrenoveringer, energioptimeringer og udviklingsprojekter, hvor potentiale realiseres gennem aktiv og struktureret udvikling.<p/>
+<br>
+<p>Vores portefølje er primært koncentreret på Sydsjælland og Lolland-Falster, hvor vi arbejder langsigtet med både eksisterende ejendomme og nye projekter.<p/>
+<div>
+</section>
+
+
+<section id="projekter-hoved">
+  <h2>Vores Projekter</h2>
+  <div style="max-width: 1200px; line-height: 1.6;">
+    <p><strong>Vores projekter</strong></p>
+<div class="image-wrap-right">
+  <img src="IMG_7105.jpeg" alt="Projekt info 1">
+  <img src="unnamed.jpg" alt="Projekt info 2">
+</div>
+<p>Hos ASC Ejendomme ApS arbejder vi løbende med udvikling, renovering og modernisering af ejendomme på Sydsjælland og Lolland-Falster.
+<br>
+Vores projekter omfatter blandt andet gennemgribende renoveringer af eksisterende boliger, etablering af nye lejemål samt generel optimering og forbedring af ejendomme. Målet er at skabe gode og funktionelle boliger med en moderne standard og en langsigtet tilgang til ejendomsdrift.
+<br>
+På denne side kan du få et indblik i nogle af de ejendomme, vi har arbejdet med, samt projekter der aktuelt er under udvikling.
+<br>
+<br>
+Projekterne er opdelt i to kategorier:
+<br>
+
+Færdige projekter: <br>
+Her kan du se eksempler på ejendomme, hvor renovering eller udvikling er afsluttet.
+<br><br>
+Igangværende projekter:
+<br>
+Her kan du få et indblik i ejendomme og projekter, som aktuelt er under renovering eller udvikling.
+Klik på en af underkategorierne i menuen for at se projekterne.</p>
+  </div>
+</section>
+
+  <section id="faerdige" 
+class="gallery">
+        <h3>Færdige projekter</h3>
+<p> Projekter som vi har renoveret</p>
+      <div class="gallery">
+   <div class="thumb-grid">
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_7105.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="IMG_7105.jpeg" data-description="Dette er et projekt færdiggjort i 2026">
+    <img src="IMG_7138.jpeg" data-description="Dette er køkkenet.">
+    <img src="IMG_7132.jpeg" data-description="Dette er køkkenet fra en anden vinkel.">
+    <img src="IMG_7142.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_7144.jpeg" data-description="Dette er et af de små værelser.">
+    <img src="IMG_7124.jpeg" data-description="Dette er det ny renoveret badeværelse.">
+  </div>
+</figure>
+
+  <div class="extra-images" style="display:none;">
+    <img src="IMG_3117.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_3132.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_3139.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+ <img src="IMG_3122.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_3083.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_0265.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+  <img src="IMG_0265.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_0267.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_0277.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_0281.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_0282.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_0297.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_0268.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_0271.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_2284.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="IMG_2284.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_2288.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_2290.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_2294.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+ <img src="IMG_2298.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_2302.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_2301.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_2305.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_2306.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_2307.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image3 (1).jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Tværgade 40, 4990</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="image3 (1).jpeg" data-description="Totalrenoveret i 2025, centralt i byen.">
+    <img src="image20.jpeg data-description="Totalrenoveret i 2025, centralt i byen.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_3117.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+      </div>
+    </section>
+  <section id="kommende"
+     class="gallery">
+        <h3>Igangværende projekter</h3>
+<p> Projekter vi er i gang med at renovere</p>
+         <div class="gallery">
+   <div class="thumb-grid">
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8564.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="IMG_8564.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_8561.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_8562.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+ <img src="IMG_8559.jpeg" data-description="Dette er en beskrivelse af stuen med de nye 
+trægulve.">
+<img src="IMG_8565.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8568.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vestergade 38, 4990</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="IMG_8568.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_8567.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_8568.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="IMG_8567.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8591.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Lindevej 25, 4990</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="IMG_8591.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_8590.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src=" " data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8594.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Møllevej 8, 4990</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="IMG_8594.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_8593.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="IMG_8594.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image16.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Agervej 5-7-9-11-15-19, 4900</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="image16.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="image3.jpeg" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="image5.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="image6.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="image14.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="image7.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="image9.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="image13.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+<img src="image18.jpeg" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image0.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Engestofte vej 78 B, C og D, 4990</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="image0.jpeg" data-description="3 lejemål. Roligt vellignende i landlige omgivelser med kort afstand til byen.">
+    <img src="image1.jpeg" data-description="3 lejemål. Roligt vellignende i landlige omgivelser med kort afstand til byen.">
+    <img src="image2.jpeg" data-description="3 lejemål. Roligt vellignende i landlige omgivelser med kort afstand til byen.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en  ikke beskrivelse af stuen med de nye trægulve.">
+    <img src="" data-description="Dette er en beskrivelse af stuen med de nye trægulve.">
+  </div>
+</figure>
+      </div>
+    </section>
+<section id="ledige"> <div class="gallery">
+        <h3>Ledige lejemål</h3>
+<br>
+<p> ASC Ejendomme ApS annoncerer som udgangspunkt ledige lejemål via etablerede boligportaler.
+Alle aktuelle boliger, billeder og ansøgningsmuligheder findes derfor på disse platforme.
+Hvis du er interesseret i et lejemål, henviser vi som udgangspunkt til annoncerne på de relevante boligportaler. Du er dog også velkommen til at kontakte os, hvis du ønsker at høre nærmere om eventuelle kommende eller forventede ledige boliger.<p/>
+
+        </div>
+</figure>
+</section>
+
+    <section id="lejere">
+<div class="page-banner">
+    <img src="image16.jpeg" alt="Information til lejere">
+    <div class="page-banner-title">Information til lejere</div>
+  </div>
+  
+      <p>Nedenfor findes overordnet information vedrørende lejemål og kommunikation hos ASC Ejendomme ApS.</p>
+<p><strong>Kommunikation:</strong>
+Al kommunikation vedrørende lejemål sker skriftligt pr. e-mail til kontakt@ascejendomme.dk.
+Ved henvendelse skal navn, adresse på lejemål og telefonnummer oplyses.<p/>
+<p><strong>Betaling:</strong>
+Husleje og øvrige opkrævninger betales i henhold til lejekontrakten.
+Tilmelding til Betalingsservice er en forudsætning ved indgåelse af lejekontrakt.<p/>
+<p><strong>Forbrug:</strong>
+Afregning af vand, varme og øvrige forbrugsudgifter sker i henhold til lejekontrakten og gældende regler.<p/>
+<p><strong>Vedligeholdelse:</strong>
+Lejers og udlejers vedligeholdelsesforpligtelser fremgår af den individuelle lejekontrakt.
+Ved behov for udbedring, der påhviler udlejer, fremsendes skriftlig henvendelse med kort beskrivelse og eventuel billeddokumentation.<p/>
+<p><strong>Ind- og fraflytning:</strong>
+Indflytnings- og fraflytningsrapporter fremsendes og behandles digitalt.
+Nærmere information vedrørende ophør af lejemål fremgår af lejekontrakten.<p/>
+<p><strong>Ændringer i lejemålet:</strong>
+Ændringer, installationer eller indgreb i lejemålet må ikke foretages uden skriftlig aftale med udlejer.<p/>
+<p><strong>Forsikring:</strong>
+Lejer skal selv tegne og opretholde gyldig indboforsikring.<p/>
+<p><strong>Skader og akutte forhold:</strong>
+Skader, der kan medføre følgeskader på ejendommen, skal anmeldes straks.
+Ved akutte forhold, der kan medføre væsentlig skade på ejendommen, kontaktes vi telefonisk uden ophold.</p>
+    </section>
+
+<section id="fordele">
+<div class="page-banner">
+    <img src="image16.jpeg" alt="Information til lejere">
+    <div class="page-banner-title">Fordele hos ASC Ejendomme Aps</div>
+  </div>
+
+<br>
+<p><strong>Rabat på Waoo fibernet:</strong>
+Som lejer hos ASC Ejendomme ApS kan du opnå rabat på internet fra Waoo via fibernettet fra Fibia.</p>
+
+<p><strong>Fiberinternet i boligerne:</strong>
+Alle boliger er klargjort til hurtigt og stabilt fiberinternet.</p>
+
+<p><strong>Renoverede og moderniserede boliger:</strong>
+En stor del af vores boliger er gennemgribende renoveret eller moderniseret, og de resterende ejendomme vedligeholdes og forbedres løbende.</p>
+
+<p><strong>Løbende vedligehold:</strong>
+Ejendommene vedligeholdes og forbedres løbende for at sikre funktionelle og tidssvarende boliger.</p>
+
+<p><strong>Professionel og stabil udlejer:</strong>
+ASC Ejendomme ApS er en professionel udlejer med fokus på ordnede forhold og klare aftaler.</p>
+
+<p><strong>Langsigtet ejerskab:</strong>
+Vi ejer og driver selv vores ejendomme med et langsigtet perspektiv, hvilket skaber stabile rammer for vores lejere.</p>
+
+<p><strong>Digital administration:</strong>
+Lejekontrakter, dokumenter og kommunikation håndteres digitalt for at gøre administrationen enkel og overskuelig.</p>
+
+<p><strong>Klare og gennemsigtige lejeaftaler:</strong>
+Lejeaftaler udformes klart og gennemgås grundigt, så både lejer og udlejer kender vilkårene.</p>
+
+<p><strong>Ordentlige lejeforhold:</strong>
+Vi lægger vægt på ordentlige lejeforhold og respekt for naboer i vores ejendomme.</p>
+
+<p><strong>Udearealer og opbevaring:</strong>
+Flere ejendomme tilbyder adgang til have, skur eller opbevaringsmuligheder.</p>
+
+<p><strong>Fokus på energieffektive forbedringer:</strong>
+Hvor det er muligt, gennemføres forbedringer som kan reducere energiforbrug og øge komforten i boligen.</p>
+</section>
+
+    <section id="om">
+<div class="page-banner">
+    <img src="image16.jpeg" alt="Information til lejere">
+    <div class="page-banner-title">Om ASC Ejendomme ApS</div>
+  </div>
+<br>
+      <p><strong>ASC Ejendomme ApS er et dansk ejendomsselskab med fokus på opkøb, udvikling og drift af bolig- og erhvervsejendomme.<p/></strong>
+
+<p>Selskabet arbejder langsigtet med værdiskabelse gennem struktureret ejendomsdrift, totalrenoveringer, energioptimeringer samt udvikling af eksisterende ejendomme. Der gennemføres ligeledes nybyggeri og større ombygningsprojekter, hvor potentiale realiseres gennem aktiv udvikling.<p/>
+
+<p>Porteføljen omfatter bolig- og erhvervslejemål primært beliggende på Lolland-Falster og Sydsjælland med fokus på bynære og strategisk placerede ejendomme. Selskabet foretager løbende opkøb og gennemfører udviklingsprojekter med henblik på at styrke og udvide ejendomsporteføljen. <p/>
+
+<p>ASC Ejendomme ApS samarbejder med professionelle rådgivere og udførende aktører og lægger vægt på kvalitet i udførelsen, ansvarlig drift og langsigtede investeringer.<p>
+
+    </section>
+
+    <section id="kontakt">
+  <h2>Kontakt os</h2>
+  <p>ASC Ejendomme ApS</p>
+  <p>Telefon: <a href="tel:+4531955616">+45 31 95 56 16</a></p>
+  <p>E-mail: kontakt@ascejendomme.dk</p>
+
+  <form action="https://formspree.io/f/mkovdzlv" method="POST">
+    <input type="text" name="navn" placeholder="Dit navn" required>
+    <input type="email" name="email" placeholder="Din e-mail" required>
+    <textarea name="besked" placeholder="Din besked" rows="5" required></textarea>
+    
+    <input type="text" name="_gotcha" style="display:none">
+    
+    <button type="submit">Send besked</button>
+  </form>
+
+  <br>
+  <p><strong>Lejerhenvendelser:</strong></p>
+  <p>Driftsrelaterede henvendelser vedrørende lejemål fremsendes skriftligt pr. e-mail med angivelse af navn, adresse på lejemål og telefonnummer. Henvendelser behandles løbende.</p>
+
+  <br>
+  <p><strong>Akutte forhold:</strong></p>
+  <p>Ved akutte forhold, der kan medføre væsentlig skade på ejendommen, kontaktes vi telefonisk uden ophold.</p>
+
+  <br>
+  <p><strong>Samarbejde, investering og ejendomshandler:</strong></p>
+  <p>Forespørgsler vedrørende samarbejde, investering, projektudvikling eller ejendomshandler rettes pr. e-mail.</p>
+  <p>ASC Ejendomme ApS gennemfører løbende opkøb og udvikling af bolig- og investeringsejendomme og indgår i dialog om relevante og strukturerede transaktioner.</p>
+</section>
+
+    <footer>
+    © Copyright ASC Ejendomme ApS  ·  CVR-nr: 44232871 · tlf-nr. +45 31 95 56 16
+    </footer>
+  </main>
+</div>
+
+<script>
+ // COOKIE LOGIK
+  function acceptCookies(){
+    localStorage.setItem('cookies','accepted');
+    document.getElementById('cookieBanner').style.display='none';
+  }
+  function declineCookies(){
+    localStorage.setItem('cookies','declined');
+    document.getElementById('cookieBanner').style.display='none';
+  }
+  if(!localStorage.getItem('cookies')){
+    document.getElementById('cookieBanner').style.display='block';
+  }
+  let currentImages = [];
+  let currentDescriptions = [];
+  let currentIndex = 0;
+
+  // Sørg for at sidebar er skjult på mobil ved start
+  if (window.innerWidth < 768) {
+    document.getElementById('sidebar').classList.add('collapsed');
+  }
+
+  // Funktion til at skifte side
+  function showPage(id){
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(id);
+    if(target) target.classList.add('active');
+    
+    if (window.innerWidth < 768) {
+      document.getElementById('sidebar').classList.add('collapsed');
+    }
+  }
+
+  // Funktion til dropdown menu
+  function toggleSubMenu() {
+    const subMenu = document.getElementById('projekter-sub');
+    if(subMenu.style.display === 'none' || subMenu.style.display === '') {
+      subMenu.style.display = 'flex';
+    } else {
+      subMenu.style.display = 'none';
+    }
+  }
+
+  function toggleMenu(){
+    document.getElementById('sidebar').classList.toggle('collapsed');
+  }
+
+  // SLIDER / GALLERI LOGIK
+ function openSlider(element) {
+  // Finder alle billeder i den skjulte div
+  const imgElements = element.querySelectorAll('.extra-images img');
+  currentImages = Array.from(imgElements).map(img => img.src);
+  currentDescriptions = Array.from(imgElements).map(img => img.getAttribute('data-description') || "");
+  
+  currentIndex = 0;
+  
+  // Her henter vi vejnavnet fra din <figcaption> og sætter det ind i bunden af slideren
+  const vejNavn = element.querySelector('figcaption').innerText;
+  document.getElementById('sliderCaption').innerText = vejNavn;
+  
+  updateSlider();
+  document.getElementById('sliderModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+  function updateSlider() {
+    document.getElementById('sliderImage').src = currentImages[currentIndex];
+    const descBox = document.getElementById('sliderDescription');
+    if (descBox) {
+      descBox.innerText = currentDescriptions[currentIndex];
+      descBox.style.display = currentDescriptions[currentIndex] ? 'block' : 'none';
+    }
+  }
+
+  function changeSlide(direction) {
+    currentIndex = (currentIndex + direction + currentImages.length) % currentImages.length;
+    updateSlider();
+  }
+
+  function closeSlider() {
+    document.getElementById('sliderModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+// Funktion der skjuler tomme billed-figurer i galleriet
+function hideEmptyFigures() {
+  // Vi kigger specifikt i sektionerne 'faerdige' og 'kommende'
+  const sections = ['faerdige', 'kommende'];
+  
+  sections.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const figures = section.querySelectorAll('figure');
+      
+      figures.forEach(figure => {
+        const img = figure.querySelector('.main-img');
+        // Hvis src er tom, eller slet ikke findes, skjul hele figuren
+        if (!img || !img.getAttribute('src') || img.getAttribute('src').trim() === "") {
+          figure.style.display = 'none';
+        }
+      });
+    }
+  });
+}
+window.addEventListener('DOMContentLoaded', hideEmptyFigures);
+</script>
+<div id="sliderModal" class="modal-slider" style="display:none;">
+  <span onclick="closeSlider()" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer; z-index:1000;">&times;</span>
+  
+  <div class="slider-wrapper" style="display: flex; flex-direction: column; align-items: center;">
+    <div style="position: relative; width: 100%; display: flex; align-items: center; justify-content: center;">
+      <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)">&#10094;</button>
+      <img id="sliderImage" src="" style="max-height: 70vh; max-width: 90%;">
+      <button class="nav-arrow next-arrow" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <div id="sliderDescription"></div>
+
+    <div id="sliderCaption" style="color:white; margin-top:20px; font-weight:bold; font-size: 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px; width: 80%;">
+  </div>
+</div>
+</body>
+</html>
