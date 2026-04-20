@@ -256,14 +256,7 @@ section {
         width: 100%;
         box-sizing: border-box;
       }
-.page-banner {
-  height: 100px;
-  margin-top: -60px;
-}
 
-.page-banner-title {
-  font-size: 24px; 
-}
 
       .thumb-grid {
         grid-template-columns: repeat(2, 1fr) !important;
@@ -517,9 +510,25 @@ width: 100%;
   text-align: center;
   width: 90%;
 }
-/* Når sektionen bliver aktiv, zoomer billedet en lille smule ind */
 section.active .page-banner img {
   transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  section.active .page-banner img {
+    transform: scale(1.0) !important;
+  }
+}
+@media (max-width: 768px) {
+  .page-banner {
+    height: 100px !important; 
+    margin-top: -60px !important;
+  }
+  .page-banner-title {
+    font-size: 18px !important;
+  }
+  section.active .page-banner img {
+    transform: scale(1.0) !important;
+  }
 }
   </style>
 </head>
