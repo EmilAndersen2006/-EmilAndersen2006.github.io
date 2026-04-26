@@ -1,0 +1,4799 @@
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASC Ejendomme ApS</title>
+  <meta name="description" content="ASC Ejendomme ApS – Professionel udlejning af huse og boliger." />
+
+  <style>
+#sliderCaption {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  width: 80%;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 15px;
+}
+#sliderDescription {
+  color: #ffffff;
+  font-size: 24px;
+  line-height: 1.6;
+  margin-top: 20px;
+  text-align: left; 
+  max-width: 75%;   
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
+  font-weight: 400;
+  display: block;
+}
+    :root {
+      --sidebar-width: 200px;
+      --primary-blue: #1f2a44;
+      --hover-blue: #41578f;
+      --bg-gray: #f4f6f8;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg-gray);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .layout { display: flex; min-height: 100vh; }
+
+    aside {
+  width: var(--sidebar-width);
+  background: var(--primary-blue);
+  color: #fff;
+  padding: 20px 10px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  transition: transform .4s ease;
+  z-index: 100;
+  box-sizing: border-box;
+
+  /* Sørg for at disse to linjer er her: */
+  display: flex;
+  flex-direction: column;
+}
+
+    aside.collapsed {
+      transform: translateX(calc(-1 * var(--sidebar-width)));
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      width: 40px;
+      height: 40px;
+      background: var(--primary-blue);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 0 6px 6px 0;
+      font-size: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    aside h2 { text-align: center; font-size: 18px; margin: 10px 0 25px; }
+
+    nav button {
+      width: 100%;
+      background: #2f3f66;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .3s;
+      text-align: left;
+    }
+
+    nav button:hover {
+      background: var(--hover-blue);
+      transform: translateX(4px);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+main {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Dette centrerer sektionerne horisontalt */
+  transition: margin-left .4s ease, width .4s ease;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+    aside.collapsed + main {
+      margin-left: 0;
+      width: 100%;
+    }
+
+ /* 1. Standard indstillinger for alle sektioner */
+section {
+  display: none;
+  padding: 0px;
+  max-width: 100%;
+  margin: 0 auto;
+  flex: 1;
+  box-sizing: border-box; /* Sikrer at billedet ikke strækker sig forkert pga. padding */
+  animation: fade .6s ease;
+  transition: all .4s ease;
+}
+
+main section {
+    width: 100% !important;
+    padding: 0 !important; /* Fjerner standard luft så banneret kan røre kanten */
+    margin: 0 !important;
+}
+.btn-ledige {
+color:#ffffff;
+}
+
+  padding: 0 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+
+    section.active { display: block; }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* FOOTER STYLING */
+    footer {
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(31, 42, 68, 0.5); /* Halvgennemsigtig mørkeblå */
+      line-height: 1.6;
+    }
+section.active { 
+  display: block; 
+  text-align: center; /* INDSÆT DENNE LINJE */
+}
+    
+
+    h1 { font-size: 34px; color: var(--primary-blue); }
+    h2 { font-size: 28px; color: var(--primary-blue); }
+    h3 { font-size: 18px; color: #1f2a44; }
+
+    /* ===== KONTAKT SEKTION ===== */
+    #kontakt {
+      text-align: center !important;
+    }
+
+    #kontakt form {
+      margin: 20px auto 0 auto;
+      text-align: left;
+      max-width: 500px;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery { 
+  margin-top: 40px; 
+  width: 100%;
+}
+   .thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 170px); 
+  gap: 120px; 
+  margin: 20px auto;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: center; 
+}
+   #faerdige .thumb-grid, 
+#kommende .thumb-grid {
+  justify-content: center;
+  width: 100% !important;
+}
+    .thumb-grid img {
+      width: 170px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      gap: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.1);
+    }
+
+    /* ===== FORM STYLING ===== */
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    form button {
+      background: var(--primary-blue);
+      color: #fff;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* ===== COOKIE BANNER ===== */
+    #cookieBanner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--primary-blue);
+      color: #fff;
+      padding: 20px;
+      display: none;
+      z-index: 1000;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    #cookieBanner button { margin: 5px; padding: 8px 16px; border-radius: 4px; border: none; cursor: pointer; }
+    .accept { background: #4caf50; color: #fff; }
+    .decline { background: #ccc; color: #000; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      aside { transform: translateX(calc(-1 * var(--sidebar-width))); }
+      aside:not(.collapsed) { transform: translateX(0); }
+      main { margin-left: 0; width: 100%; }
+      section { padding: 80px 20px; text-align: center; }
+section { 
+        padding: 60px 15px; 
+        text-align: center; 
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+
+      .thump-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+        padding: 0;
+      }
+      
+      .thump-grid img {
+        height: 140px; /* Lidt lavere højde på mobil så det ser pænere ud */
+      }
+    }
+/* Styling til den store billedvisning (Modal) */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 2000; /* Skal ligge oven over alt andet */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Sort baggrund med 90% gennemsigtighed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+#modalCaption {
+  color: #fff;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Gør projekt-kortet klikbart */
+.project-card { cursor: pointer; transition: 0.3s; }
+.project-card:hover { transform: scale(1.02); }
+
+/* Modal (Baggrunden når man har klikket) */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95);
+  overflow-y: auto; /* Gør det muligt at scrolle ned gennem alle billederne */
+  padding: 40px 0;
+}
+
+/* Beholderen til de store billeder */
+.modal-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.modal-content-wrapper img {
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.close-gallery {
+  position: fixed;
+  top: 20px; right: 30px;
+  color: white; font-size: 40px;
+  cursor: pointer; z-index: 2100;
+}
+/* Slider Modal Styling */
+.modal-slider {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+}
+
+#sliderImage {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: none;
+  font-size: 40px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.image-wrap-right {
+  float: right;            
+  margin-left: 25px;       
+  margin-bottom: 15px;     
+  padding: 0px;            /* Luft inde i rammen */
+  border: 10px solid #1f2a44; 
+  background: #ffffff;     
+  display: flex;
+  gap: 0px;               
+  max-width: 400px;
+}
+
+.image-wrap-right img {
+  width: 200px;            
+  height: 200px;           
+  object-fit: cover;       
+  border-radius: 4px;
+}
+
+/* Gør at de ligger under hinanden eller centreret på små mobilskærme */
+@media (max-width: 600px) {
+  .image-wrap-right {
+    float: none;
+    margin: 0 auto 20px auto;
+    justify-content: center;
+  }
+}
+
+#forside {
+  position: relative; /* Allows the image to anchor to this section */
+  min-height: 100vh;
+width: 100%;       
+  overflow: hidden;
+  padding: 0; 
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /
+  z-index: 1;        /* Lowest layer */
+  filter: brightness(50%); /* Makes your white text readable */
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 2;        /* Higher layer than the image */
+  padding: 60px;     /* Restores the look of your padding */
+  color: #ffffff;    /* Makes text white to stand out against the photo */
+}
+
+/* Ensure headings inside the overlay are also white */
+.content-overlay h1, 
+.content-overlay p {
+  color: #ffffff !important;
+}
+.bg-image {
+    filter: brightness(40%); 
+ -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+.nav-arrow:hover { background: rgba(255,255,255,0.4); }
+.prev-arrow { left: -60px; }
+.next-arrow { right: -60px; }
+
+@media (max-width: 768px) {
+  .nav-arrow { padding: 5px 10px; font-size: 25px; }
+  .prev-arrow { left: 0; }
+  .next-arrow { right: 0; }
+}
+/* 1. Vi fjerner den tvungne padding i siderne på de sider der har banner */
+#lejere, #fordele, #om {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 60px; /* Beholder luft i toppen */
+  max-width: 100%;   /* Sikrer at sektionen kan fylde det hele */
+}
+
+/* 2. Vi sikrer at banneret altid bruger 100% af den plads, main-området har */
+.page-banner {
+  width: 100%;            
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  margin: -60px 0 40px 0; /* Trækker banneret helt op til kanten af menuen */
+  border-bottom: 5px solid var(--primary-blue);
+  
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+#projekter-hoved {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+#projekter-hoved {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+#projekter-galleri section {
+  width: auto !important;
+}
+
+.forside-link {
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  display: inline-block;      
+  transition: opacity 0.3s;
+}
+
+.forside-link:hover {
+  opacity: 0.8;               
+}
+
+.page-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      
+  filter: brightness(60%);
+  transition: transform 1.2s cubic-bezier(0.2, 0, 0.2, 1);
+  display: block;
+}
+
+main section p {
+  line-height: 2.8;     
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 0;
+  padding-bottom: 0;
+   font-size: 18px; 
+  color: #000000 !important;
+}
+
+
+.page-banner-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 38px;
+  font-weight: bold;
+  text-shadow: 4px 4px 16px rgba(0,0,0,0.5);
+  text-align: center;
+  width: 90%;
+}
+section.active .page-banner img {
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  section.active .page-banner img {
+    transform: scale(1.0) !important;
+  }
+}
+@media (max-width: 768px) {
+  .page-banner {
+    height: 100px !important; 
+    margin-top: 0px !important;
+  }
+  .page-banner-title {
+    font-size: 18px !important;
+  }
+  section.active .page-banner img {
+    transform: scale(1.0) !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+<div id="cookieBanner">
+  <p>Vi anvender cookies for at sikre den bedste brugeroplevelse.</p>
+  <button class="accept" onclick="acceptCookies()">Ja tak</button>
+  <button class="decline" onclick="declineCookies()">Nej tak</button>
+</div>
+
+<div class="layout">
+<aside id="sidebar">
+  <div class="toggle-btn" onclick="toggleMenu()">☰</div>
+  <h2>ASC Ejendomme</h2>
+ <nav>
+  <button onclick="showPage('forside')">Forside</button>
+  <button onclick="showPage('ledige')" >Ledige lejemål</button>
+  
+  <button onclick="showPage('projekter-hoved'); toggleSubMenu()">Projekter ▾</button>
+  
+  <div id="projekter-sub" style="display: none; padding-left: 15px; flex-direction: column; gap: 5px; margin-bottom: 10px;">
+    <button onclick="showPage('faerdige')" style="font-size: 13px; background: #3d4f7a; padding: 8px;">↳ Færdige projekter</button>
+    <button onclick="showPage('kommende')" style="font-size: 13px; background: #3d4f7a; padding: 8px;">↳ Igangværende projekter</button>
+  </div>
+
+  <button onclick="showPage('lejere')">Information til lejere</button>
+<button onclick="showPage('fordele')">Lejerfordele</button>
+  <button onclick="showPage('om')">Om os</button>
+  <button onclick="showPage('kontakt')">Kontakt</button>
+</nav>
+
+  <div style="text-align: center; padding: 20px 0; margin-top: auto;">
+    <img src="Logo.png" style="max-width: 170px; height: 120px;">
+  </div>
+</aside>
+
+
+
+  <main>
+    <section id="forside" class="active">
+<img src="IMG_8559.jpeg" class="bg-image">
+<div class="content-overlay">
+    <h1>Ejendomsinvestering og udvikling på Sydsjælland og Lolland-Falster</h1>
+    <br>
+<p>ASC Ejendomme ApS opkøber, renoverer og driver boligejendomme på Sydsjælland og Lolland-Falster.
+Fokus er på kvalitet, langsigtet drift og løbende optimering.</p>
+ <div class="forside-link" onclick="showPage('ledige')">Ledige lejemål kan ses her</div>
+
+ <br>
+ <br>
+<div class="forside-link" onclick="showPage('kontakt')">Har du spørgsmål, er du velkommen til at kontakte os</div>
+</section>
+
+
+<section id="projekter-hoved">
+  <h2>Vores Projekter</h2>
+  <div style="max-width: 1000px; line-height: 1.6;">
+<div class="image-wrap-right">
+  <img src="IMG_7105.jpeg" alt="Projekt info 1">
+  <img src="unnamed.jpg" alt="Projekt info 2">
+</div>
+<div class="text-content"></div>
+</div>
+<div style="max-width: 1000px; line-height: 1.6;">
+<p>Hos ASC Ejendomme ApS arbejder vi løbende med udvikling, renovering og modernisering af ejendomme på Sydsjælland og Lolland-Falster.
+<br>
+Vores projekter omfatter blandt andet gennemgribende renoveringer af eksisterende boliger, etablering af nye lejemål samt generel optimering og forbedring af ejendomme. Målet er at skabe gode og funktionelle boliger med en moderne standard og en langsigtet tilgang til ejendomsdrift.
+<br>
+På denne side kan du få et indblik i nogle af de ejendomme, vi har arbejdet med, samt projekter der aktuelt er under udvikling.
+Projekterne er opdelt i to kategorier.
+<br>
+<br>
+<p><strong>Færdige projekter:</strong></p> 
+<p>Her kan du se eksempler på ejendomme, hvor renovering eller udvikling er afsluttet.</p>
+<br>
+<p><strong>Igangværende projekter:</strong></p>
+<p>Her kan du få et indblik i ejendomme og projekter, som aktuelt er under renovering eller udvikling.
+Klik på en af underkategorierne i menuen for at se projekterne.</p>
+  </div>
+</section>
+
+  <section id="faerdige">
+<div class="gallery">
+        <h2>Færdige projekter</h2>
+<br>
+      <div class="gallery">
+   <div class="thumb-grid">
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_7105.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Aastrupvej 88, 4850 Stubbekøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+<div class="extra-images" style="display:none;">
+   <div class="slide-item">
+      <img src="IMG_7105.jpeg">
+      <div class="slide-text">Totalrenoveret villa i landlige omgivelser primo 2026.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_7138.jpeg">
+      <div class="slide-text">Totalrenoveret villa i landlige omgivelser primo 2026.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_7132.jpeg">
+      <div class="slide-text">Totalrenoveret villa i landlige omgivelser primo 2026.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_7142.jpeg">
+      <div class="slide-text">Totalrenoveret villa i landlige omgivelser primo 2026.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_7144.jpeg">
+      <div class="slide-text">Totalrenoveret villa i landlige omgivelser primo 2026.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_7124.jpeg">
+      <div class="slide-text">Totalrenoveret villa i landlige omgivelser primo 2026.</div>
+   </div>
+ </div>
+</figure>
+
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_0265.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Aastrupvej 5, 4850 Stubbekøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+   <div class="slide-item">
+      <img src="IMG_0265.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+ <div class="slide-item">
+      <img src="IMG_0267.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+ <div class="slide-item">
+      <img src="IMG_0277.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_0281.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_0282.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+ <div class="slide-item">
+      <img src="IMG_0297.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_0268.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+<div class="slide-item">
+      <img src="IMG_0271.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i et villakvarter i udkanten af Stubbekøbing.</div>
+   </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_2284.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Lyttehøjvej 13, 4840 Nørre Alslev</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+      <img src="IMG_2284.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_2288.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_2290.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_2294.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+  <img src="IMG_2298.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+  <img src="IMG_2302.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_2301.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_2305.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_2306.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_2307.jpeg">
+      <div class="slide-text">Renoveret i 2025 og beliggende i landlige omgivelser.</div>
+   </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image3 (1).jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Tværgade 40, 4990 Nykøbing Falster</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="image3 (1).jpeg">
+      <div class="slide-text">Totalrenoveret i 2025, centralt i byen.</div>
+   </div>
+<div class="slide-item">
+<img src="image20.jpeg">
+      <div class="slide-text">Totalrenoveret i 2025, centralt i byen.</div>
+   </div>
+ <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8594.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Møllevej 8, 4990 Sakskøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8594.jpeg">
+      <div class="slide-text">Villa tæt på centrum i Sakskøbing. Forventes totalrenoveret ved fraflytning, som påbegyndes snarest.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8593.jpeg">
+      <div class="slide-text">Villa tæt på centrum i Sakskøbing. Forventes totalrenoveret ved fraflytning, som påbegyndes snarest.</div>
+   </div>
+  <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+
+
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8594.jpeg">
+      <div class="slide-text">Villa tæt på centrum i Sakskøbing. Forventes totalrenoveret ved fraflytning, som påbegyndes snarest.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8593.jpeg">
+      <div class="slide-text">Villa tæt på centrum i Sakskøbing. Forventes totalrenoveret ved fraflytning, som påbegyndes snarest.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8568.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vestergade 38, 4990 Sakskøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+   <img src="IMG_8568.jpeg">
+      <div class="slide-text">Totalrenoveret i slutningen af 2025.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_8567.jpeg">
+      <div class="slide-text">Totalrenoveret i slutningen af 2025.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_8568.jpeg">
+      <div class="slide-text">Totalrenoveret i slutningen af 2025.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_3117.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Tingbanken, 4800 Nykøbing Falster</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+ <img src="IMG_3117.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_3118.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_3119.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_3120.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_3121.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+  <img src="IMG_3122.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_3123.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+  <img src="IMG_3124.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_3125.jpeg">
+      <div class="slide-text">Ejendommen ligger tæt på Nordbyen i Nykøbing Falster og indeholder 2 totalrenoverede lejligheder samt 1 lejlighed, der renoveres ved fraflytning.
+Derudover påbegynder vi primo maj etablering af endnu et lejemål i den tidligere erhvervsdel af ejendommen.</div>
+   </div>
+ </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+  </div>
+  </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+  
+      </div>
+    </section>
+  <section id="kommende">
+      <div class="gallery">
+        <h2>Kommende og igangværende projekter</h2>
+<br>
+         <div class="gallery">
+   <div class="thumb-grid">
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8564.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Orebyvej 7, 4990 Sakskøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+    <img src="IMG_8564.jpeg">
+      <div class="slide-text">Her påbegyndes renovering i efteråret 2026. Der etableres 6 nye totalrenoverede lejemål med havudsigt tæt på centrum i Sakskøbing.</div>
+   </div>
+<div class="slide-item">
+ <img src="IMG_8561.jpeg">
+      <div class="slide-text">Her påbegyndes renovering i efteråret 2026. Der etableres 6 nye totalrenoverede lejemål med havudsigt tæt på centrum i Sakskøbing.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_8562.jpeg">
+      <div class="slide-text">Her påbegyndes renovering i efteråret 2026. Der etableres 6 nye totalrenoverede lejemål med havudsigt tæt på centrum i Sakskøbing.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_8559.jpeg">
+      <div class="slide-text">Her påbegyndes renovering i efteråret 2026. Der etableres 6 nye totalrenoverede lejemål med havudsigt tæt på centrum i Sakskøbing.</div>
+   </div>
+<div class="slide-item">
+  <img src="IMG_8565.jpeg">
+      <div class="slide-text">Her påbegyndes renovering i efteråret 2026. Der etableres 6 nye totalrenoverede lejemål med havudsigt tæt på centrum i Sakskøbing.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image25.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Tværgade 49, 4800 Nykøbing Falster</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+ <img src="image25.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+    <img src="image28.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="image29.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+    <img src="image26.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="image27.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="image37.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+ <img src="image31.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="image32.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="image33.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, den er færdig ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="image34.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, sådan stod den der vi påbegyndte renoveringen.</div>
+   </div>
+<div class="slide-item">
+<img src="image35.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, sådan stod den der vi påbegyndte renoveringen.</div>
+   </div>
+<div class="slide-item">
+<img src="image36.jpeg">
+      <div class="slide-text">Her har vi totalrenoveret en villa i hjertet af Nykøbing Falster 2026, sådan stod den der vi påbegyndte renoveringen.</div>
+   </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8591.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Lindevej 25, 4990 Sakskøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8591.jpeg">
+      <div class="slide-text">Villa i bymidten af Sakskøbing. Ejendommen er desværre brandskadet, og vi påbegynder totalrenovering primo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8590.jpeg">
+      <div class="slide-text">Villa i bymidten af Sakskøbing. Ejendommen er desværre brandskadet, og vi påbegynder totalrenovering primo april.</div>
+   </div>
+ </div>
+ <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8591.jpeg">
+      <div class="slide-text">Villa i bymidten af Sakskøbing. Ejendommen er desværre brandskadet, og vi påbegynder totalrenovering primo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8590.jpeg">
+      <div class="slide-text">Villa i bymidten af Sakskøbing. Ejendommen er desværre brandskadet, og vi påbegynder totalrenovering primo april.</div>
+   </div>
+ </div>
+ <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8591.jpeg">
+      <div class="slide-text">Villa i bymidten af Sakskøbing. Ejendommen er desværre brandskadet, og vi påbegynder totalrenovering primo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8590.jpeg">
+      <div class="slide-text">Villa i bymidten af Sakskøbing. Ejendommen er desværre brandskadet, og vi påbegynder totalrenovering primo april.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8576.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Agervej 5–11, 4900 Sakskøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8576.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8575.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Agervej 13–19, 4900 Sakskøbing </figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+   <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8575.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8589.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8587.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8586.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8580.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8579.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8577.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_8574.jpeg">
+      <div class="slide-text">Her er vi påbegyndt totalrenovering af 8 lejemål i takt med, at lejerne fraflytter. Ejendommene ligger tæt på centrum i Sakskøbing. Første lejemål forventes klar ultimo april.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8596.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Engestoftevej 78B, 78C og 78D, 4990 Sakskøbing</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+   <img src="IMG_8596.jpeg">
+      <div class="slide-text">Lejemålene totalrenoveres i takt med, at lejerne fraflytter.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8601.jpeg">
+      <div class="slide-text">Lejemålene totalrenoveres i takt med, at lejerne fraflytter.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_8600.jpeg">
+      <div class="slide-text">Lejemålene totalrenoveres i takt med, at lejerne fraflytter.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_8598.jpeg">
+      <div class="slide-text">Lejemålene totalrenoveres i takt med, at lejerne fraflytter.</div>
+   </div>
+   <div class="slide-item">
+    <img src="IMG_8599.jpeg">
+      <div class="slide-text">Lejemålene totalrenoveres i takt med, at lejerne fraflytter.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image 1.png" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Majbøllevej 85, 4862 Guldborg</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+  <img src="image 1.png">
+      <div class="slide-text">Her totalrenoverer vi en enfamilieejendom, som forventes færdig ultimo april. Ejendommen er beliggende i landlige omgivelser og opgraderes med varmepumpe, gulvvarme m.v.</div>
+   </div>
+<div class="slide-item">
+   <img src="image 2.png">
+      <div class="slide-text">Her totalrenoverer vi en enfamilieejendom, som forventes færdig ultimo april. Ejendommen er beliggende i landlige omgivelser og opgraderes med varmepumpe, gulvvarme m.v.</div>
+   </div>
+<div class="slide-item">
+    <img src="image 3.png">
+      <div class="slide-text">Her totalrenoverer vi en enfamilieejendom, som forventes færdig ultimo april. Ejendommen er beliggende i landlige omgivelser og opgraderes med varmepumpe, gulvvarme m.v.</div>
+   </div>
+<div class="slide-item">
+  <img src="image 4.png">
+      <div class="slide-text">Her totalrenoverer vi en enfamilieejendom, som forventes færdig ultimo april. Ejendommen er beliggende i landlige omgivelser og opgraderes med varmepumpe, gulvvarme m.v.</div>
+   </div>
+<div class="slide-item">
+<img src="image 5.png">
+      <div class="slide-text">Her totalrenoverer vi en enfamilieejendom, som forventes færdig ultimo april. Ejendommen er beliggende i landlige omgivelser og opgraderes med varmepumpe, gulvvarme m.v.</div>
+   </div>
+<div class="slide-item">
+<img src="image 6.png">
+      <div class="slide-text">Her totalrenoverer vi en enfamilieejendom, som forventes færdig ultimo april. Ejendommen er beliggende i landlige omgivelser og opgraderes med varmepumpe, gulvvarme m.v.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image1 (1).jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Tingbanken 4 B. St 4800 Nykøbing Falster</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="image1 (1).jpeg">
+      <div class="slide-text">Her bygger vi i 2026 en helt ny lejlighed i et gammel erhvervs lokale tæt på Nordbyen på 100 m2 
+Byggestart:  01/05-2026</div>
+   </div>
+<div class="slide-item">
+  <img src="image2 (1).jpeg">
+      <div class="slide-text">Her bygger vi i 2026 en helt ny lejlighed i et gammel erhvervs lokale tæt på Nordbyen på 100 m2 
+Byggestart:  01/05-2026</div>
+   </div>
+<div class="slide-item">
+    <img src="image3 (2).jpeg">
+      <div class="slide-text">Her bygger vi i 2026 en helt ny lejlighed i et gammel erhvervs lokale tæt på Nordbyen på 100 m2 
+Byggestart:  01/05-2026</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="image0 (1).jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Fægangen 9, 4171 Glumsø</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="image0 (1).jpeg">
+      <div class="slide-text">Villa som skal renoveres i foråret 2026.</div>
+   </div>
+<div class="slide-item">
+   <img src="image1 (2).jpeg">
+      <div class="slide-text">Villa som skal renoveres i foråret 2026.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_9475.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Majbøllevej 35, 4862 Guldborg</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_9475.jpeg">
+      <div class="slide-text">Her bygger vi 6 nye lejligheder plus en renovering tæt på strand/vand og motorvej i efteråret 2026.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_9476.jpeg">
+      <div class="slide-text">Her bygger vi 6 nye lejligheder plus en renovering tæt på strand/vand og motorvej i efteråret 2026.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_9477.jpeg">
+      <div class="slide-text">Her bygger vi 6 nye lejligheder plus en renovering tæt på strand/vand og motorvej i efteråret 2026.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_9478.jpeg">
+      <div class="slide-text">Her bygger vi 6 nye lejligheder plus en renovering tæt på strand/vand og motorvej i efteråret 2026.</div>
+   </div>
+   <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+ </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="IMG_8622.jpeg" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Stubmøllevej 23, 4800 Nykøbing Falster</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+<div class="slide-item">
+<img src="IMG_8622.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_8603.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_8536.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8725.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8377.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8723.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_9009.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+  <img src="IMG_8996.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_8901.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8993.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+     <img src="IMG_8992.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_8721.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8983.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+    <img src="IMG_8773.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+   <img src="IMG_8772.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+ <img src="IMG_8367.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+ <img src="IMG_8701.jpeg">
+      <div class="slide-text">Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+ <img src="IMG_7968.jpeg">
+      <div class="slide-text">Dette var standen der vi påbegyndte renoveringen. Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_7966.jpeg">
+      <div class="slide-text">Dette var standen der vi påbegyndte renoveringen. Færdig 01/05-2026 totalrenoveret en famile.</div>
+   </div>
+<div class="slide-item">
+<img src="IMG_7882.jpeg">
+      <div class="slide-text">Dette var standen der vi påbegyndte renoveringen. Færdig 01/05-2026 totalrenoveret en famile.</div>
+  </div>
+ </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+  </div>
+  </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+    <figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+    </figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+<figure style="margin: 0; text-align: center; cursor: pointer;" onclick="openSlider(this)">
+  <img src="" class="main-img" style="width:170px; height:160px; object-fit:cover; border-radius:8px;">
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Vejnavn 1</figcaption>
+  <figcaption style="font-weight: bold; color: #1f2a44; margin-top: 8px;">Se mere</figcaption>
+  
+  <div class="extra-images" style="display:none;">
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    <div class="slide-item">
+      <img src="">
+      <div class="slide-text">Beskrivelse her</div>
+    </div>
+    </div>
+</figure>
+
+      </div>
+    </section>
+<section id="ledige"> <div class="gallery">
+<div class="page-banner">
+    <img src="image11.jpeg" alt="Ledige lejemål hos ASC Ejendomme">
+    <div class="page-banner-title">Ledige Lejemål</div>
+</div>
+<p> ASC Ejendomme ApS annoncerer som udgangspunkt ledige lejemål via etablerede boligportaler.
+Alle aktuelle boliger, billeder og ansøgningsmuligheder findes derfor på disse platforme.
+Hvis du er interesseret i et lejemål, henviser vi som udgangspunkt til annoncerne på de relevante boligportaler. Du er dog også velkommen til at kontakte os, hvis du ønsker at høre nærmere om eventuelle kommende eller forventede ledige boliger.<p/>
+
+  
+</figure>
+</section>
+
+    <section id="lejere">
+<div class="page-banner">
+    <img src="IMG_8575.jpg" alt="Information til lejere">
+    <div class="page-banner-title">Information til lejere</div>
+    </div>
+<div class="text-content">
+<p><strong>Lejerhenvendelser:</strong></p>
+<p>Henvendelser sendes pr. e-mail med navn, adresse og telefonnummer.</p>
+<p><strong>Akutte forhold:</strong></p>
+<p>Ved forhold der kan medføre skade på ejendom kontaktes vi telefonisk.</p>
+<p><strong>Vedligehold og fejlmelding:</strong></p>
+<p>Fejl og mangler meddeles skriftligt med beskrivelse og evt. billeder.</p>
+<p><strong>Fraflytning:</strong></p>
+<p>Ved opsigelse indkaldes til flyttesyn i henhold til gældende regler.</p>
+</div>
+    </section>
+
+<section id="fordele">
+<div class="page-banner">
+    <img src="IMG_8575.jpg" alt="Information til lejere">
+    <div class="page-banner-title">Fordele hos ASC Ejendomme Aps</div>
+    </div>
+<div class="text-content">
+<p><strong>Rabat på Waoo fibernet:</strong></p>
+<p>Som lejer hos ASC Ejendomme ApS kan du opnå rabat på internet fra Waoo via fibernettet fra Fibia.</p>
+
+<p><strong>Fiberinternet i boligerne:</strong></p>
+<p>Alle boliger er klargjort til hurtigt og stabilt fiberinternet.</p>
+
+<p><strong>Renoverede og moderniserede boliger:</strong></p>
+<p>En stor del af vores boliger er gennemgribende renoveret eller moderniseret, og de resterende ejendomme vedligeholdes og forbedres løbende.</p>
+
+<p><strong>Løbende vedligehold:</strong></p>
+<p>Ejendommene vedligeholdes og forbedres løbende for at sikre funktionelle og tidssvarende boliger.</p>
+
+<p><strong>Professionel og stabil udlejer:</strong></p>
+<p>ASC Ejendomme ApS er en professionel udlejer med fokus på ordnede forhold og klare aftaler.</p>
+
+<p><strong>Langsigtet ejerskab:</strong></p>
+<p>Vi ejer og driver selv vores ejendomme med et langsigtet perspektiv, hvilket skaber stabile rammer for vores lejere.</p>
+
+<p><strong>Digital administration:</strong></p>
+<p>Lejekontrakter, dokumenter og kommunikation håndteres digitalt for at gøre administrationen enkel og overskuelig.</p>
+
+<p><strong>Klare og gennemsigtige lejeaftaler:</strong></p>
+<p>Lejeaftaler udformes klart og gennemgås grundigt, så både lejer og udlejer kender vilkårene.</p>
+
+<p><strong>Ordentlige lejeforhold:</strong></p>
+<p>Vi lægger vægt på ordentlige lejeforhold og respekt for naboer i vores ejendomme.</p>
+
+<p><strong>Udearealer og opbevaring:</strong></p>
+<p>Flere ejendomme tilbyder adgang til have, skur eller opbevaringsmuligheder.</p>
+
+<p><strong>Fokus på energieffektive forbedringer:</strong></p>
+<p>Hvor det er muligt, gennemføres forbedringer som kan reducere energiforbrug og øge komforten i boligen.</p>
+</div>
+</section>
+
+    <section id="om">
+<div class="page-banner">
+    <img src="IMG_8575.jpg" alt="Information til lejere">
+    <div class="page-banner-title">Om ASC Ejendomme ApS</div>
+    </div>
+<div class="text-content">
+<p>ASC Ejendomme ApS beskæftiger sig med opkøb, udvikling og drift af boligejendomme på Sydsjælland og Lolland-Falster.
+
+Vi arbejder løbende med renovering og optimering af eksisterende ejendomme med fokus på kvalitet og langsigtet værdiskabelse.</p>
+</div>
+    </section>
+
+    <section id="kontakt">
+  <h2>Kontakt os</h2>
+  <p>ASC Ejendomme ApS</p>
+  <p>Telefon: <a href="tel:+4531955616">+45 31 95 56 16</a></p>
+  <p>E-mail: kontakt@ascejendomme.dk</p>
+
+  <form action="https://formspree.io/f/mkovdzlv" method="POST">
+    <input type="text" name="navn" placeholder="Dit navn" required>
+    <input type="email" name="email" placeholder="Din e-mail" required>
+    <textarea name="besked" placeholder="Din besked" rows="5" required></textarea>
+    
+    <input type="text" name="_gotcha" style="display:none">
+    
+    <button type="submit">Send besked</button>
+  </form>
+
+  <br>
+  <p>Har du spørgsmål, er du velkommen til at kontakte os.</p>
+</section>
+
+    <footer>
+    © Copyright ASC Ejendomme ApS  ·  CVR-nr: 44232871 · Mail: kontakt@ascejendomme.dk
+    </footer>
+  </main>
+</div>
+
+<script>
+// --- MENU FUNKTIONER ---
+function toggleMenu() {
+  document.getElementById('sidebar').classList.toggle('collapsed');
+}
+
+function toggleSubMenu() {
+  const sub = document.getElementById('projekter-sub');
+  sub.style.display = (sub.style.display === 'none' || sub.style.display === '') ? 'flex' : 'none';
+}
+
+function showPage(pageId) {
+  const sections = document.querySelectorAll('section');
+  sections.forEach(sec => sec.classList.remove('active'));
+  const target = document.getElementById(pageId);
+  if (target) target.classList.add('active');
+  
+  // Luk mobilmenu ved klik
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.add('collapsed');
+  }
+}
+
+// --- COOKIE FUNKTIONER ---
+function acceptCookies() {
+  localStorage.setItem('cookiesAccepted', 'true');
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
+function declineCookies() {
+  localStorage.setItem('cookiesAccepted', 'false');
+  document.getElementById('cookieBanner').style.display = 'none';
+}
+
+window.onload = function() {
+  if (!localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookieBanner').style.display = 'block';
+  }
+};
+
+// --- SLIDER FUNKTIONER ---
+let currentSlides = [];
+let currentSlideIndex = 0;
+
+function openSlider(figureElement) {
+  const items = figureElement.querySelectorAll('.slide-item');
+  currentSlides = Array.from(items).map(item => ({
+    src: item.querySelector('img').src,
+    text: item.querySelector('.slide-text').innerHTML
+  }));
+
+  if (currentSlides.length > 0) {
+    currentSlideIndex = 0;
+    updateSlider();
+    document.getElementById('sliderModal').style.display = 'flex';
+  }
+}
+
+function updateSlider() {
+  const img = document.getElementById('sliderImage');
+  const desc = document.getElementById('sliderDescription');
+  const caption = document.getElementById('sliderCaption');
+  
+  img.src = currentSlides[currentSlideIndex].src;
+  desc.innerHTML = currentSlides[currentSlideIndex].text;
+  caption.innerText = `Billede ${currentSlideIndex + 1} af ${currentSlides.length}`;
+}
+
+function changeSlide(step) {
+  currentSlideIndex += step;
+  if (currentSlideIndex >= currentSlides.length) currentSlideIndex = 0;
+  if (currentSlideIndex < 0) currentSlideIndex = currentSlides.length - 1;
+  updateSlider();
+}
+
+function closeSlider() {
+  document.getElementById('sliderModal').style.display = 'none';
+}
+
+// --- DEN OPDATEREDE FUNKTION (FEJLFRI VERSION) ---
+function hideEmptyFigures() {
+  const figures = document.querySelectorAll('figure');
+  
+  figures.forEach(fig => {
+    const mainImg = fig.querySelector('.main-img');
+    const extraImagesContainer = fig.querySelector('.extra-images');
+    
+    // 1. Fjern tomme slide-items (dem uden billede-kilde)
+    if (extraImagesContainer) {
+      const slideItems = extraImagesContainer.querySelectorAll('.slide-item');
+      slideItems.forEach(item => {
+        const img = item.querySelector('img');
+        if (!img || !img.getAttribute('src') || img.getAttribute('src').trim() === "") {
+          item.remove(); // Fjerner kassen helt hvis der ikke er noget billede
+        }
+      });
+    }
+
+    // 2. Tjek om hele galleriet/projektet skal skjules
+    const remainingSlides = extraImagesContainer ? extraImagesContainer.querySelectorAll('.slide-item').length : 0;
+    
+    // Skjul projektet hvis hovedbilledet mangler ELLER hvis der slet ingen gyldige billeder er tilbage
+    if (!mainImg || !mainImg.getAttribute('src') || mainImg.getAttribute('src').trim() === "" || remainingSlides === 0) {
+      fig.style.display = 'none';
+    }
+  });
+}
+
+// Luk modal ved klik udenfor
+window.onclick = function(event) {
+  const modal = document.getElementById('sliderModal');
+  if (event.target === modal) closeSlider();
+};
+
+// Kør oprydning når siden er indlæst
+window.addEventListener('DOMContentLoaded', hideEmptyFigures);
+</script>
+<div id="sliderModal" class="modal-slider" style="display:none;">
+  <span onclick="closeSlider()" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer; z-index:1000;">&times;</span>
+  
+  <div class="slider-wrapper" style="display: flex; flex-direction: column; align-items: center;">
+    <div style="position: relative; width: 100%; display: flex; align-items: center; justify-content: center;">
+      <button class="nav-arrow prev-arrow" onclick="changeSlide(-1)">&#10094;</button>
+      <img id="sliderImage" src="" style="max-height: 70vh; max-width: 90%;">
+      <button class="nav-arrow next-arrow" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
+    <div id="sliderDescription"></div>
+
+    <div id="sliderCaption" style="color:white; margin-top:20px; font-weight:bold; font-size: 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px; width: 80%;">
+  </div>
+</div>
+</body>
+</html>
